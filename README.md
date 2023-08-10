@@ -7,9 +7,39 @@
 
 A parser for the [Change This Then That](https://github.com/change-this-then-that).
 
-```
-git clone git@github.com:change-this-then-that/cttt-parser.git
+# Examples
 
-cargo run --example strict
-cargo run --example strict_error
+Basic usage:
+
+```
+let s = "
+// @cttt.name(foo)
+let x = 1;
+// @cttt.change(bar)
+
+// @cttt.name(bar)
+let y = 2;
+// @cttt.change(foo)
+";
+
+println!("{:#?}", cttt_parser::parse(&s));
+```
+
+Strict usage:
+
+```
+let s = "
+// @cttt.name(foo)
+let x = 1;
+// @cttt.change(bar)
+
+// @cttt.name(bar)
+let y = 2;
+// @cttt.change(foo)
+";
+
+println!(
+  "{:#?}",
+  cttt_parser::parse_strict(&s, vec!["name".to_string(), "change".to_string()])
+);
 ```

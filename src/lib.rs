@@ -22,32 +22,6 @@
 
 #![doc = include_str!("../README.md")]
 
-
-//! # Examples
-//!
-//! Basic usage:
-//! ```
-//! let s = "
-//! // @cttt.name(foo)
-//! let x = 1;
-//! // @cttt.change(bar)
-//!
-//! // @cttt.name(bar)
-//! let y = 2;
-//! // @cttt.change(foo)
-//! ";
-//!
-//! println!("{:#?}", cttt_parser::parse(&s));
-//! ```
-//!
-//! Strict usage:
-//! ```
-//! println!(
-//!   "{:#?}", 
-//!   cttt_parser::parse_strict(&s, vec!["name".to_string(), "change".to_string()])
-//! );
-//! ```
-
 use pest::Parser;
 use pest_derive::Parser;
 

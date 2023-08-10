@@ -9,5 +9,5 @@ let y = 2;
 // @cttt.change(foo)
 ";
 
-    println!("{:#?}", cttt_parser::parse(&s));
+    println!("{:#?}", cttt_parser::parse(s));
 }

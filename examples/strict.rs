@@ -13,5 +13,5 @@ let y = 2;
 
     let allowed_commands = vec![String::from("name"), String::from("change")];
 
-    println!("{:#?}", cttt_parser::parse_strict(&s, allowed_commands));
+    println!("{:#?}", cttt_parser::parse_strict(s, allowed_commands));
 }

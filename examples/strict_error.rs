@@ -13,5 +13,5 @@ let y = 2;
 
     let allowed_commands = vec![];
 
-    println!("{:#?}", cttt_parser::parse_strict(&s, allowed_commands));
+    println!("{:#?}", cttt_parser::parse_strict(s, allowed_commands));
 }
