@@ -22,7 +22,7 @@ let y = 2;
 // @cttt.change(foo)
 ";
 
-println!("{:#?}", cttt_parser::parse(&s));
+println!("{:#?}", cttt_parser::parse(s));
 ```
 
 Strict usage:
@@ -40,6 +40,6 @@ let y = 2;
 
 println!(
   "{:#?}",
-  cttt_parser::parse_strict(&s, vec!["name".to_string(), "change".to_string()])
+  cttt_parser::parse_strict(s, vec!["name".to_string(), "change".to_string()])
 );
 ```
