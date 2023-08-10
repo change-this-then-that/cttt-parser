@@ -11,7 +11,7 @@ A parser for the [Change This Then That](https://github.com/change-this-then-tha
 
 Basic usage:
 
-```
+```rust
 let s = "
 // @cttt.name(foo)
 let x = 1;
@@ -27,7 +27,7 @@ println!("{:#?}", cttt_parser::parse(&s));
 
 Strict usage:
 
-```
+```rust
 let s = "
 // @cttt.name(foo)
 let x = 1;
