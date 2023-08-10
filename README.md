@@ -6,3 +6,10 @@
 [![Audit](https://github.com/change-this-then-that/cttt-parser/actions/workflows/audit.yml/badge.svg)](https://github.com/change-this-then-that/cttt-parser/actions/workflows/audit.yml)
 
 A parser for the [Change This Then That](https://github.com/change-this-then-that).
+
+```
+git clone git@github.com:change-this-then-that/cttt-parser.git
+
+cargo run --example strict
+cargo run --example strict_error
+```

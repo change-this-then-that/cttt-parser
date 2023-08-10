@@ -20,6 +20,34 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#![doc = include_str!("../README.md")]
+
+
+//! # Examples
+//!
+//! Basic usage:
+//! ```
+//! let s = "
+//! // @cttt.name(foo)
+//! let x = 1;
+//! // @cttt.change(bar)
+//!
+//! // @cttt.name(bar)
+//! let y = 2;
+//! // @cttt.change(foo)
+//! ";
+//!
+//! println!("{:#?}", cttt_parser::parse(&s));
+//! ```
+//!
+//! Strict usage:
+//! ```
+//! println!(
+//!   "{:#?}", 
+//!   cttt_parser::parse_strict(&s, vec!["name".to_string(), "change".to_string()])
+//! );
+//! ```
+
 use pest::Parser;
 use pest_derive::Parser;
 
@@ -27,6 +55,7 @@ use pest_derive::Parser;
 #[grammar = "grammar.pest"] // relative to src
 struct ChangeParser;
 
+/// A Comment with a command and arguments
 #[derive(Debug, PartialEq, serde::Serialize, Clone)]
 pub struct Comment {
     command: Option<String>,
@@ -34,6 +63,7 @@ pub struct Comment {
     args: Vec<String>,
 }
 
+/// Debug information for a Comment
 #[derive(Debug, PartialEq, serde::Serialize, Clone)]
 pub struct CommentDebug {
     pub comment: String,
@@ -41,9 +71,10 @@ pub struct CommentDebug {
     pub col: usize,
 }
 
+/// Namespace for commands
 pub static NAMESPACE: &str = "@cttt";
 
-// Parse a string into a vector of Comments.
+/// Parse a string into a vector of Comments.
 pub fn parse(s: &str) -> Result<Vec<Comment>, pest::error::Error<Rule>> {
     let parse = ChangeParser::parse(Rule::document, s).unwrap();
 
@@ -111,7 +142,7 @@ pub fn parse(s: &str) -> Result<Vec<Comment>, pest::error::Error<Rule>> {
     Ok(comments)
 }
 
-// custom error
+/// Error identifying location of unknown command
 #[derive(Debug, PartialEq, serde::Serialize)]
 pub struct UnknownCommandError {
     comment: String,
@@ -120,11 +151,14 @@ pub struct UnknownCommandError {
     line: usize,
 }
 
+/// Error identifying location of unknown command or other parsing error
+#[derive(Debug)]
 pub enum StrictParseError {
     UnknownCommand(Vec<UnknownCommandError>),
     Pest(pest::error::Error<Rule>),
 }
 
+/// Parse a string into a vector of Comments, and check for unknown commands.
 pub fn parse_strict(s: &str, commands: Vec<String>) -> Result<Vec<Comment>, StrictParseError> {
     let comments = parse(s).map_err(StrictParseError::Pest)?;
 
