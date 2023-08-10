@@ -1,0 +1,8 @@
+namespace      =  { ^"@cttt" }
+command        =  { (ASCII_ALPHA | "-")* }
+args           = @{ argv ~ ("," ~ argv)* ~ ","? }
+argv           =  { (ASCII_ALPHANUMERIC | "-" | "_" | "/" | "." | " ")* }
+until_new_line = _{ (!NEWLINE ~ ANY)+ }
+prefix         = _{ (!(namespace | NEWLINE) ~ ANY)* }
+comment        =  { prefix ~ namespace ~ ("." ~ command ~ "(" ~ args ~ ")")? ~ until_new_line? ~ NEWLINE* }
+document       =  { SOI ~ (comment | until_new_line | NEWLINE)* ~ EOI }
