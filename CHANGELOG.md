@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2](https://github.com/change-this-then-that/cttt-parser/compare/v0.1.1...v0.1.2) - 2023-08-10
+
+### Other
+- *(README)* fix borrow
+- *(README)* add language to code blocks
+
 ## [0.1.1](https://github.com/change-this-then-that/cttt-parser/compare/v0.1.0...v0.1.1) - 2023-08-10
 
 ### Fixed
