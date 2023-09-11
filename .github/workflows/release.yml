@@ -36,7 +36,7 @@ jobs:
         with:
           app_id: ${{ secrets.JPOEHNELT_RELEASE_APP_ID }}
           private_key: ${{ secrets.JPOEHNELT_RELEASE_APP_PRIVATE_KEY }}
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ steps.generate-token.outputs.token }}
